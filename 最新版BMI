@@ -1,0 +1,33 @@
+# 获取用户输入身高体重，并转化为浮点型
+def calculate_bmi():
+    # 添加循环计算
+    while True:
+        try:
+        #新增明确身高体重单位并进行转化
+            height = float(input('请输入身高(m)：'))
+            weight = float(input('请输入体重(kg)：'))
+# 数据验证，避免数据异常
+        except ValueError:
+            print('非法数据,请重新输入')
+            continue
+        if height <= 0 or weight <= 0:
+            print('身高或体重不能小于0')
+            continue
+# 根据公式和输入数据计算BMI
+        BMI = weight / (height**2)
+# 根据得到的BMI数值进行判断是否健康
+        if BMI < 18.5:
+            print('体重过轻')
+        elif BMI < 24:
+            print('体重正常')
+        elif BMI < 27:
+            print('体重过重')
+        else:
+            print('体重过胖')
+        # 按y表示继续计算，按其他表示结束计算
+        choice = input('请问是否继续？(输入y表示继续)')
+        if choice.lower() != 'y':
+            print('本次计算结束')
+            break
+# 调用函数
+calculate_bmi()
